@@ -40,9 +40,10 @@ export default async function PostsPage({searchParams,}: {searchParams: { type?:
     return <div className="text-center text-3xl font-bold">Post Not Found!</div>;
   }
 
+  
   return (
     <main>
-      <h1 className='text-4xl font-bold my-6 py-10'>{category} {type}s</h1>
+      <h1 className='text-4xl font-bold my-6 py-10'>{category} {type}</h1>
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {filteredPosts.map((article) => (
           <Card

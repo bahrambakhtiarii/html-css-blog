@@ -17,7 +17,7 @@ export default function Hero() {
             A modern blog for web developers. Hands-on articles, clean code examples, and up-to-date best practices.
           </p>
           <div className="flex justify-center lg:justify-start gap-4">
-            <Link href="/posts/all">
+            <Link href="/posts">
               <Button className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-6 rounded-lg text-base font-medium">
                 Explore Posts
               </Button>
