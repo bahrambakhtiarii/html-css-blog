@@ -22,15 +22,15 @@ async function getPosts(): Promise<Posts[]> {
 
   return res.json();
 }
-
-interface PostsPageProps {
+//*****Bug at Name****
+interface Post01Pa01gPr {
   searchParams: {
     type?: string;
     category?: string;
   };
 }
 
-export default async function PostsPage({ searchParams }: PostsPageProps) {
+export default async function PostsPage({ searchParams }: Post01Pa01gPr) {
   const type = searchParams.type || '';
   const category = searchParams.category || '';
 

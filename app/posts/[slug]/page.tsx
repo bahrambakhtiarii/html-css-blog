@@ -22,14 +22,14 @@ async function getPosts(): Promise<Posts[]> {
 
   return res.json();
 }
-
-interface SinglePostPageProps {
+//اسناهاش
+interface SinglPostPag01Prp {
   params: {
     slug: string;
   };
 }
 
-export default async function SinglePost({ params }: SinglePostPageProps) {
+export default async function SinglePost({ params }: SinglPostPag01Prp) {
   const allPosts = await getPosts();
   const post = allPosts.find((a) => a.slug === params.slug);
 
