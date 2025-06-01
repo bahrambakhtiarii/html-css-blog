@@ -37,10 +37,10 @@ export default function About(){
                         />
                     </div>
 
-                    <p className="leading-relaxed mt-8 prose prose-lg max-w-none text-justify">    
-                        We aim to simplify the complexities of coding and transform learning into an enjoyable and accessible experience for everyone, whether you're a complete beginner just entering the web world or an experienced developer seeking new tricks and ways to refine your skills. Every article and tutorial published here is the result of hours of thorough research, coding, and meticulous review to ensure you receive the best and most practical information.
+                    <p className="leading-relaxed mt-8 prose prose-lg max-w-none text-justify">
+                        We aim to simplify the complexities of coding and transform learning into an enjoyable and accessible experience for everyone, whether you&apos;re a complete beginner just entering the web world or an experienced developer seeking new tricks and ways to refine your skills. Every article and tutorial published here is the result of hours of thorough research, coding, and meticulous review to ensure you receive the best and most practical information.
 
-                        On this journey, your companionship and feedback are incredibly valuable to us. We're here to answer your questions, help you overcome challenges, and assist you in achieving your goals in the fascinating world of web development. Join us, and together, let's build beautiful, efficient, and impressive websites!
+                        On this journey, your companionship and feedback are incredibly valuable to us. We&apos;re here to answer your questions, help you overcome challenges, and assist you in achieving your goals in the fascinating world of web development. Join us, and together, let&apos;s build beautiful, efficient, and impressive websites!
                     </p>
 
                     <div className="flex flex-col items-center mt-10 space-y-6">
