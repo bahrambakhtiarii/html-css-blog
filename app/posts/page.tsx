@@ -1,4 +1,5 @@
 import Card from '@/components/Card';
+import { notFound } from 'next/navigation'; 
 
 export type Posts = {
   id: string;
@@ -11,7 +12,8 @@ export type Posts = {
 };
 
 async function getPosts(): Promise<Posts[]> {
-  const res = await fetch("http://localhost:3000/api/posts", { cache: "no-store" });
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/posts`, { cache: "no-store" });
 
   if (!res.ok) {
     console.error("Failed to fetch posts:", res.status, res.statusText);
@@ -21,8 +23,14 @@ async function getPosts(): Promise<Posts[]> {
   return res.json();
 }
 
-export default async function PostsPage({searchParams,}: {searchParams: { type?: string; category?: string }}) {
+interface PostsPageProps {
+  searchParams: {
+    type?: string;
+    category?: string;
+  };
+}
 
+export default async function PostsPage({ searchParams }: PostsPageProps) {
   const type = searchParams.type || '';
   const category = searchParams.category || '';
 
@@ -36,29 +44,41 @@ export default async function PostsPage({searchParams,}: {searchParams: { type?:
   if (type) {
     filteredPosts = filteredPosts.filter((p) => p.type === type);
   }
-  if (!filteredPosts) {
-    return <div className="text-center text-3xl font-bold">Post Not Found!</div>;
+
+  if (filteredPosts.length === 0 && (category || type)) {
+    return notFound();
   }
 
-  
+  const pageTitle = (category && type) 
+    ? `${category} ${type}s` 
+    : category
+      ? `${category} Posts` 
+      : type
+        ? `${type}s` 
+        : 'All Posts';
+
   return (
     <main>
-      <h1 className='text-4xl font-bold my-6 py-10'>{category} {type}</h1>
+      <h1 className='text-4xl font-bold my-6 py-10 text-center'>{pageTitle}</h1> 
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {filteredPosts.map((article) => (
-          <Card
-            key={article.id}
-            id={article.id}
-            title={article.title}
-            category={article.category}
-            slug={article.slug}
-            img={article.img}
-            description={article.description}
-          />
-        ))
-      }
-    </section>
+        {filteredPosts.length > 0 ? ( 
+          filteredPosts.map((article) => (
+            <Card
+              key={article.id}
+              id={article.id}
+              title={article.title}
+              category={article.category}
+              slug={article.slug}
+              img={article.img}
+              description={article.description}
+            />
+          ))
+        ) : (
+          <p className="col-span-full text-center text-gray-500">
+            No posts found matching the applied filters.
+          </p>
+        )}
+      </section>
     </main>
-    
   );
 }
