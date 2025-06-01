@@ -17,8 +17,15 @@ export default function About(){
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <p className="leading-relaxed prose prose-lg max-w-none text-justify">
-                            Welcome to our blog! On this exciting journey of learning and discovery, we're a team of web developers and enthusiasts who've come together with immense passion to share our knowledge and experience in HTML and CSS with you. Our story began with a shared love for structuring content and beautifying web pages—much like how HTML builds the skeleton of a structure and CSS adds its vibrant colors and finishes.
-                            Here on this blog, our main goal is to create a comprehensive yet practical resource for anyone looking to get started with HTML and CSS from scratch, or to deepen their existing knowledge in these fields. We believe that the web world is evolving at lightning speed, and to keep up, access to updated and reliable educational resources is essential. That's why our team is constantly striving to provide you with the latest trends, best practices, and practical tips through articles, tutorials, and hands-on code examples.
+                            Welcome to our blog! On this exciting journey of learning and discovery, we&apos;re a team of web developers and enthusiasts
+                            who&apos;ve come together with immense passion to share our knowledge and experience in HTML and CSS with you. Our story began
+                            with a shared love for structuring content and beautifying web pages—much like how HTML builds the skeleton of a structure
+                            and CSS adds its vibrant colors and finishes.
+                            Here on this blog, our main goal is to create a comprehensive yet practical resource for anyone looking to get started with
+                            HTML and CSS from scratch, or to deepen their existing knowledge in these fields. We believe that the web world is evolving
+                            at lightning speed, and to keep up, access to updated and reliable educational resources is essential. That&apos;s why our team
+                            is constantly striving to provide you with the latest trends, best practices, and practical tips through articles, tutorials,
+                            and hands-on code examples.
                         </p>
 
                         <Image 

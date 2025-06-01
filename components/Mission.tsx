@@ -24,7 +24,12 @@ export default function Mission(){
                         Our Mission
                     </h2>
                     <p className="text-slate-600 mb-8 text-lg text-justify">
-                        Our mission is to demystify HTML and CSS, making web development accessible and enjoyable for everyone, from absolute beginners taking their first steps to experienced developers looking to refine their skills. We believe that learning to build for the web shouldn't be complicated. Our blog provides clear, concise, and practical tutorials, breaking down complex concepts into easy-to-understand language. Through hands-on projects and relevant examples, we empower our readers to not only grasp the fundamentals but also to master advanced techniques, fostering a community where learning is intuitive and progress is tangible.
+                        Our mission is to demystify HTML and CSS, making web development accessible and enjoyable for everyone,
+                        from absolute beginners taking their first steps to experienced developers looking to refine their skills.
+                        We believe that learning to build for the web shouldn&apos;t be complicated. Our blog provides clear, concise, 
+                        and practical tutorials, breaking down complex concepts into easy-to-understand language. Through hands-on projects 
+                        and relevant examples, we empower our readers to not only grasp the fundamentals but also to master advanced techniques, 
+                        fostering a community where learning is intuitive and progress is tangible.
                     </p>
                 </div>
             </div>
