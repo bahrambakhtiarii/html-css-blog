@@ -12,8 +12,7 @@ export type Posts = {
 };
 
 async function getPosts(): Promise<Posts[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/posts`, { cache: "no-store" });
+  const res = await fetch(`/api/posts`, { cache: "no-store" });
 
   if (!res.ok) {
     console.error("Failed to fetch posts:", res.status, res.statusText);
