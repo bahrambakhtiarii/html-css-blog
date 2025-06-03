@@ -12,15 +12,19 @@ export type Posts = {
 };
 
 async function getPosts(): Promise<Posts[]> {
-  const res = await fetch(`/api/posts`, { cache: "no-store" });
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
+  const url = new URL('/api/posts', baseUrl).toString();
+
+  const res = await fetch(url, { cache: 'no-store' });
 
   if (!res.ok) {
-    console.error("Failed to fetch posts:", res.status, res.statusText);
+    console.error('Failed to fetch posts:', res.status, res.statusText);
     return [];
   }
 
   return res.json();
 }
+
 
 // اصلاح تایپ searchParams به Promise
 interface PostListPageProps {
