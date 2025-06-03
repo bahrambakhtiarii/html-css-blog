@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { notFound } from 'next/navigation'; 
+import { notFound } from "next/navigation";
 
 export type Posts = {
   id: string;
@@ -12,29 +12,30 @@ export type Posts = {
 };
 
 async function getPosts(): Promise<Posts[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000"; 
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/posts`, { cache: "no-store" });
 
   if (!res.ok) {
     console.error("Failed to fetch posts:", res.status, res.statusText);
-    return []; 
+    return [];
   }
 
   return res.json();
 }
-//اسناهاش
-interface SinglPostPag01Prp {
-  params: {
-    slug: string;
-  };
-}
 
-export default async function SinglePost({ params }: SinglPostPag01Prp) {
+// params به صورت Promise
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function SinglePostPage({ params }: PageProps) {
+  const { slug } = await params;
+
   const allPosts = await getPosts();
-  const post = allPosts.find((a) => a.slug === params.slug);
+  const post = allPosts.find((a) => a.slug === slug);
 
   if (!post) {
-    notFound(); 
+    notFound();
   }
 
   return (
@@ -54,9 +55,7 @@ export default async function SinglePost({ params }: SinglPostPag01Prp) {
         />
       </figure>
       <article className="prose prose-lg max-w-none text-justify leading-relaxed">
-        <p>
-          {post.description}
-        </p>
+        <p>{post.description}</p>
       </article>
     </div>
   );

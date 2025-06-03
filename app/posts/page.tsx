@@ -1,5 +1,5 @@
 import Card from '@/components/Card';
-import { notFound } from 'next/navigation'; 
+import { notFound } from 'next/navigation';
 
 export type Posts = {
   id: string;
@@ -22,17 +22,17 @@ async function getPosts(): Promise<Posts[]> {
 
   return res.json();
 }
-//*****Bug at Name****
-interface Post01Pa01gPr {
-  searchParams: {
+
+// اصلاح تایپ searchParams به Promise
+interface PostListPageProps {
+  searchParams: Promise<{
     type?: string;
     category?: string;
-  };
+  }>;
 }
 
-export default async function PostsPage({ searchParams }: Post01Pa01gPr) {
-  const type = searchParams.type || '';
-  const category = searchParams.category || '';
+export default async function PostsPage({ searchParams }: PostListPageProps) {
+  const { type = '', category = '' } = await searchParams;
 
   const allPosts = await getPosts();
 
@@ -46,22 +46,22 @@ export default async function PostsPage({ searchParams }: Post01Pa01gPr) {
   }
 
   if (filteredPosts.length === 0 && (category || type)) {
-    return notFound();
+    notFound();
   }
 
-  const pageTitle = (category && type) 
-    ? `${category} ${type}s` 
+  const pageTitle = category && type
+    ? `${category} ${type}s`
     : category
-      ? `${category} Posts` 
-      : type
-        ? `${type}s` 
-        : 'All Posts';
+    ? `${category} Posts`
+    : type
+    ? `${type}s`
+    : 'All Posts';
 
   return (
     <main>
-      <h1 className='text-4xl font-bold my-6 py-10 text-center'>{pageTitle}</h1> 
+      <h1 className="text-4xl font-bold my-6 py-10 text-center">{pageTitle}</h1>
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {filteredPosts.length > 0 ? ( 
+        {filteredPosts.length > 0 ? (
           filteredPosts.map((article) => (
             <Card
               key={article.id}
